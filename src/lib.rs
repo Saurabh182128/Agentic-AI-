@@ -44,7 +44,8 @@ impl Document {
 
     /// Extract keywords from the document
     pub fn extract_keywords(&self, top_n: usize) -> Vec<String> {
-        let words: Vec<&str> = self.content.to_lowercase().split_whitespace().collect();
+        let lowered_content = self.content.to_lowercase();
+        let words: Vec<&str> = lowered_content.split_whitespace().collect();
         let mut word_freq: HashMap<String, usize> = HashMap::new();
 
         // Common stop words to filter out
